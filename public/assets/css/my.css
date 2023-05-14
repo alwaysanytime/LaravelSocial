@@ -1,0 +1,60 @@
+.dropdown-my:hover .dropdown-container {
+    display: flex;
+}
+
+.dropdown-container {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 10px;
+    flex-direction: column;
+    top: 120%;
+    right: 0;
+    z-index: 99999;
+}
+
+.style-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.color-selector.active {
+    border: 2px solid rgb(1, 146, 230);
+}
+
+.color-selector {
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.color-picker {
+    display: flex;
+}
+
+.color-picker>div {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.color-picker>div>input {
+    margin: 10px;
+}
+
+.color-selector>.link-position {
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 7px;
+    flex-direction: column;
+    height: 30px;
+    border: 1px solid rgb(140, 140, 141);
+}

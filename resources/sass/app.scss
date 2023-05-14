@@ -1,0 +1,25 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+@import 'global';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '../js/pages/Start/start.scss';
+@import '../js/components/Input/Input.css';
+@import '../js/components/Edit/edit.scss';
+@import '../js/components/Sidebar/sidebar.scss';
+@import '../js/pages/Home/Home.scss';
+@import '../js/pages/Profile/Profile.scss';
+@import '../js/pages/Feedback/feedback.scss';
+@import '../js/pages/Setting/setting.scss';
+@import '../js/pages/Analytics/analytics.scss';
+@import '../js/pages/ColorStyle/colorstyle.scss';
+@import '../js/components/PhoneScreen/phone.scss';
+@import '../js/components/LoadingScreen/LoadingScreen.scss';
+@import '../js/components/Modal/modal.scss';
+@import '../js/pages/Follow/follow.scss';
+@import '../js/pages/Verification/Verification.scss';
+@import '../js/pages/EmailNotification/index.scss';

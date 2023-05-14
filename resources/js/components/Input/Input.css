@@ -1,0 +1,24 @@
+.danger {
+    border: 1px solid red;
+}
+
+.custom-input {
+    border-radius: 5px;
+}
+
+.custom-input input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: black;
+}
+
+.error {
+    color: red;
+}
+
+.notify-icon {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}

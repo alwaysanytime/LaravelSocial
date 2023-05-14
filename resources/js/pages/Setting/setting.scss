@@ -1,0 +1,59 @@
+.settings-header {
+    border-bottom: 1px solid $gray-1;
+    display: flex;
+    justify-content: space-between;
+    min-height: 70px;
+    align-items: center;
+    padding: 0 20px;
+    div {
+        font-size: 20px;    
+        font-weight: 700;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 5px 20px;
+        border-radius: 20px;
+        border: none;
+        font-weight: 700;
+        outline: none;
+        background-color: transparent;
+        color: $gray-9;
+        display: flex;
+        align-items: center;
+        i {
+            font-size: 20px;
+            margin-left: 10px;
+        }
+    }
+
+}
+
+.settings-content {
+    padding: 20px;
+    .panel {
+        border-bottom: 1px solid $gray-1;
+        padding-bottom: 30px;
+        .account-information-header {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .form-field {
+            color: $gray-9;
+            margin-bottom: 10px;
+            label {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.feedback-link {
+    a {
+        color: black !important;
+        font-size: 20px;
+    }
+    padding: 20px;
+    border-bottom: 1px solid $gray-1;
+}

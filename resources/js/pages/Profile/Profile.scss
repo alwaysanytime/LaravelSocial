@@ -1,0 +1,56 @@
+.profile-header {
+    border-bottom: 1px solid $gray-1;
+    display: flex;
+    justify-content: space-between;
+    min-height: 70px;
+    align-items: center;
+    padding: 0 20px;
+    div {
+        font-size: 20px;    
+        font-weight: 700;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 5px 20px;
+        border-radius: 20px;
+        border: 1px solid $light-gray;
+        font-weight: 700;
+        outline: none;
+        background-color: transparent;
+    }
+
+}
+
+.profile-content {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .links-container {
+        display: flex;
+        margin-top: 50px;
+        width: 100%;
+        flex-direction: column;
+
+        .link {
+            color: black;
+            border-radius: 10px;
+            width: 100%;
+            background-color: rgb(234, 239, 240);
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: 700;
+            font-size: 16px;
+            position: relative;
+
+            i {
+                position: absolute;
+                left: 20px;
+                font-size: 20px;
+            }
+        }
+    }
+}

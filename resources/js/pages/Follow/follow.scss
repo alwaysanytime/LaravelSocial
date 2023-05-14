@@ -1,0 +1,47 @@
+.follow-header {
+    height: 70px;
+    border-bottom: 1px solid $gray-1;
+    h5 {
+        display: flex;
+        justify-content: center;
+        a {
+            color: black !important;
+            height: 70px;
+            line-height: 70px;
+            font-weight: 700;
+            display: inline-block;
+        }
+        a.active {
+            border-bottom: 3px solid $blue-0;
+        }
+    }
+}
+
+.search-bar {
+    border-bottom: 1px solid $gray-1;
+    height: 70px;
+    font-size: 20px;
+}
+
+.follow-profile {
+    padding: 20px 30px;
+    cursor: pointer;
+    &:hover {
+        background-color: $gray-1;
+    }
+}
+
+.follow-button-alert {
+    background-color: $gray-1;
+}
+
+.page-item {
+    a {
+        color: black !important;
+    }
+    &.active {
+        a {
+            color: white !important;
+        }
+    }
+}

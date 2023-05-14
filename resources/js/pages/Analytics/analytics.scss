@@ -1,0 +1,202 @@
+.analytics-content {
+    .lifetime-analytics {
+        padding: 20px;
+        border-bottom: 1px solid $gray-1;
+        .lifetime-header {
+            color: $gray-10;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+}
+
+.table-container {
+    max-width: 100%;
+    table-layout: fixed;
+    thead {
+        tr {
+            background-color: $gray-1;
+            font-size: 20px;
+            td {
+                padding: 10px;
+            }
+        }
+    }
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    tr {
+        td {
+            padding: 10px;
+            padding-left: 10px;
+            a {
+                word-break: break-word;
+            }
+        }
+        cursor: pointer;
+        border-bottom: 1px solid $gray-1;
+        &:hover {
+            background-color: $gray-1;
+        }
+    }
+}
+
+tr {
+    td:nth-child(2) {
+        text-align: center;
+    }
+    td:nth-child(3) {
+        text-align: center;
+    }
+}
+
+.p-header {
+    td {
+        padding: 30px;
+        padding-left: 10px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    &:hover {
+        background-color: transparent !important;
+    }
+}
+
+.p-title {
+    td {
+        font-size: 15px;
+        padding: 30px;
+        font-weight: 700;
+    }
+    &:hover {
+        background-color: transparent !important;
+    }
+}
+
+.title-container {
+    color: $gray-10;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.lifetime-container {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    div {
+        display: flex;
+        flex-direction: column;
+        span:nth-child(1) {
+            color: $gray-9;
+            font-size: 20PX;
+        }
+        span:nth-child(2) {
+            color: black;
+            font-size: 20px;
+        }
+    }
+}
+
+.activity-container {
+    border-bottom: 1px solid $gray-1;
+    padding-bottom: 20px;
+    .activity-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid $gray-1;
+        span:nth-child(1) {
+            font-size: 20px;
+            font-weight: 500;
+            color: $gray-10;
+        }
+        span:nth-child(2) {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(64, 157, 211);
+        }
+    }
+    .activity-calendar {
+        padding: 20px;
+        border-bottom: 1px solid $gray-1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $gray-1;
+        div {
+            font-size: 20px;
+            font-weight: 700;
+            i {
+                color: $gray-9;
+                margin-right: 30px;
+            }
+        }
+        span {
+            color: $gray-9;
+            font-size: 20px;
+        }
+    }
+}
+
+.referrers {
+    padding: 20px;
+    .title-container {
+        margin-bottom: 20px;
+    }
+    border-bottom: 1px solid $gray-1;
+    table {
+        width: 100%;
+        color: black;
+        font-weight: 700;
+        font-size: 16px;
+        tr, td {
+            padding: 10px;
+        }
+    }
+}
+
+.location {
+    padding: 20px;
+    .title-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        div:nth-child(2) {
+            button {
+                color: $gray-9;
+                margin-right: 20px;
+                font-size: 16px;
+            }
+        }
+    }
+    border-bottom: 1px solid $gray-1;
+    .country-container {
+        padding-left: 20px;
+        .country {
+            span {
+                margin-right: 20px;
+                color: $gray-9;
+                font-weight: 500;
+            }
+            span:nth-child(1) {
+                font-weight: 700;
+                color: black
+            }
+        }
+    }
+}
+
+.sub-traffic {
+    &>td:first-child {
+        word-break: break-all;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .table-container {
+        td+td {
+            width: 80px;
+        }
+    }
+}

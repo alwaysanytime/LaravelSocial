@@ -1,0 +1,12 @@
+.edit-container {
+    display: flex;
+    button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+    button:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,11 @@
+.mobile-links-container {
+    .link {
+        position: relative;
+        i {
+            position: absolute;
+            left: 20px;
+            font-size: 30px;
+            margin-top: 5px;
+        } 
+    }
+}

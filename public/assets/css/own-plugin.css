@@ -1,0 +1,40 @@
+.customized-scrollbar::-webkit-scrollbar {
+    height: 10px;
+    background-color: transparent;
+}
+
+.customized-scrollbar::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.customized-scrollbar::-webkit-scrollbar-track {
+}
+
+.custom-input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+@media (max-width: 992px) {
+    .user-search-container>div>div {
+        margin-top: 10px;
+    }
+}
+
+.point {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+select:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+.game-mode-panel select:disabled {
+    color: white;
+}
