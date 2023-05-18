@@ -15,7 +15,7 @@ const Reset = React.lazy(() => import('../../components/Auth/Reset'));
 const HomeScreen = () => {
 
     useEffect(() => {
-        setMetaData("Cookie", "Make the most of your social traffic", "cookie, cookie.link, cookie link, link in bio, bio link, linkinbio", "index");
+        setMetaData("Booking", "Make the most of your social traffic", "cookie, bookings247.co, cookie link, link in bio, bio link, linkinbio", "index");
     }, []);
 
     const user = useSelector(state => state.auth);
@@ -49,15 +49,15 @@ const HomeScreen = () => {
     }
 
     return <>
-        <h1 className="start-desc text-mobile-center" style={{fontWeight: 700, fontSize: 60}}>Make the most of your social traffic</h1>
-        <h1 className="mt-3 text-secondary text-mobile-center" style={{fontWeight: 700, fontSize: 25}}>Track which of your social pages are generating you the most traffic and drive that audience to the right place.</h1>
+        <h1 className="start-desc text-mobile-center" style={{fontWeight: 700, fontSize: 60}}>Booking Site</h1>
+        <h1 className="mt-3 text-secondary text-mobile-center" style={{fontWeight: 700, fontSize: 25}}>Wake Up Rentals – Jet Ski Rentals</h1>
         <div className="d-flex w-100 mt-3 start-page-input">
-            <div style={{borderRadius: 15, fontWeight: 700, fontSize: 20, padding: 10}} className="light-bg-color d-flex" onClick={focusUsername}>
-                <span>cookie.link/</span>
+            {/* <div style={{borderRadius: 15, fontWeight: 700, fontSize: 20, padding: 10}} className="light-bg-color d-flex" onClick={focusUsername}>
+                <span>bookings247.co/</span>
                 <input id="username-input" className="transparent-input w-100" placeholder='username' value={username} onChange = {onChangeHandler} style={{width: 100, marginTop: -2}} onKeyUp={(event) => navigateToRegister(event)} onFocus={inputFocus} onBlur={inputBlur}/>
-            </div>
+            </div> */}
             <button className="btn btn-primary px-5 ml-2" style={{borderRadius: 15, fontWeight: 700, fontSize: 20, height: 54}} to="/register" onClick={() => navigate('/register')}>
-                Start My Page
+                Book Now
             </button>
         </div>
     </>;

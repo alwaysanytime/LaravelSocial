@@ -50,7 +50,7 @@ class UserController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => 'Email is already in use'
-                ], 422); 
+                ], 422);
         }
         if ($req->has('username')) {
             $_user = User::where('username', $req->Username)->first();
@@ -58,7 +58,7 @@ class UserController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => 'Username is already in use'
-                ], 422); 
+                ], 422);
         }
         $user = User::where('username', $req->username)->first();
         foreach($fields as $field)
@@ -83,18 +83,18 @@ class UserController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Password Updated Successfully'
-                ], 200); 
+                ], 200);
         }
         else
             return response()->json([
                 'success' => false,
                 'message' => 'Wrong Password'
-            ], 422); 
+            ], 422);
     }
 
     public function upload(Request $request) {
             // $folderPath = public_path('avatar/');
-            $folderPath = base_path().'//cookie.link//avatar//';
+            $folderPath = base_path().'//bookings247.co//avatar//';
             $image_parts = explode(";base64,", $request->avatar);
             $image_type_aux = explode("image/", $image_parts[0]);
             $image_type = $image_type_aux[1];
