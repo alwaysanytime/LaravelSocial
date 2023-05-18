@@ -13,7 +13,6 @@ import { uploadAction } from '../../store/actions/auth';
 import { setMetaData } from '../../config/config';
 import ReactTooltip from 'react-tooltip';
 import { cutAmazonTag } from '../../config/config';
-import { toggleSocialAction } from '../../store/actions/auth';
 
 const ReactAvatarEditor = React.lazy(() => import('../../components/ReactAvatarEditor/ReactAvatarEditor'));
 const LoadingButton = React.lazy(() => import('../../components/LoadingButton/Button'));
@@ -80,7 +79,7 @@ const Home = () => {
     const readImage = (avatar) => {
         dispatch(uploadAction({avatar}));
     }
-    
+
     const [avatar, setAvatar] = useState(null);
     const [deleteModal, setDeleteModal] = useState(false);
     const [linkid, setLinkId] = useState(-1);
@@ -95,7 +94,7 @@ const Home = () => {
 
     const copyLink = () => {
         let textArea = document.createElement("textarea");
-        textArea.value = "cookie.link/" + user.username;
+        textArea.value = "bookings247.co/" + user.username;
         // make the textarea out of viewport
         textArea.style.position = "fixed";
         textArea.style.left = "-999999px";
@@ -201,7 +200,7 @@ const Home = () => {
     const closeAlert = () => {
         toggleSocialAction('suggest');
     }
-    
+
     return <Suspense fallback={<div />} ><div className="d-flex h-100 home-container">
         <ReactAvatarEditor avatar = {avatar} visible={avatarModal} hideModal={() => setAvatarModal(false)} upload={readImage}></ReactAvatarEditor>
         <Modal visible={deleteModal} hideModal={() => setDeleteModal(false)}>
@@ -224,7 +223,7 @@ const Home = () => {
             <div className="header">
                 <div className="d-none d-xl-block col-xl-7 title">Home</div>
                 <div className="col-12 col-xl-5 d-flex justify-content-between">
-                    <span className='d-flex align-items-center'><span className='desc'>My Cookie:</span><span className='text-decoration-underline ml-2'>cookie.link/{user.username}</span></span>
+                    <span className='d-flex align-items-center'><span className='desc'>My Cookie:</span><span className='text-decoration-underline ml-2'>bookings247.co/{user.username}</span></span>
                     <a className='text-decoration-none' onClick={copyLink}>copy link</a>
                 </div>
             </div>
@@ -245,7 +244,7 @@ const Home = () => {
                             <span>Protect Link</span>
                         </ReactTooltip>
                         <ReactTooltip id='emailalert' type='dark' place="bottom" >
-                            <span>Email Alert.</span>    
+                            <span>Email Alert.</span>
                         </ReactTooltip>
                         <ReactTooltip id='deleteroute' type='dark' place="bottom">
                             <span>Delete Link</span>
@@ -255,10 +254,10 @@ const Home = () => {
                             <p className='text-center'>If you lose access to any of your social media accounts, you can send<br />your cookie followers your new account details.</p>
                         </ReactTooltip>
                         <DragDropContext onDragEnd={handleOnDragEnd}>
-                            <Droppable droppableId="links-body"> 
+                            <Droppable droppableId="links-body">
                                 {(provided) => (
                                     <div className="links-body" {...provided.droppableProps} ref={provided.innerRef}>
-                                        {links.map((link, index) => 
+                                        {links.map((link, index) =>
                                             <Draggable key={"link" + link.id} draggableId={"link" + link.id} index={index}>
                                                 {(provided) => (
                                                     <div>

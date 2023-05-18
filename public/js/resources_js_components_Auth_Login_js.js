@@ -12,9 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _Input_Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Input/Input */ "./resources/js/components/Input/Input.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _store_actions_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/actions/auth */ "./resources/js/store/actions/auth.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_toast_notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-toast-notifications */ "./node_modules/react-toast-notifications/dist/index.js");
@@ -22,25 +22,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../config/config */ "./resources/js/config/config.js");
 /* harmony import */ var react_google_recaptcha__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-google-recaptcha */ "./node_modules/react-google-recaptcha/lib/esm/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
 
 
 
@@ -57,53 +50,44 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Login = function Login(props) {
   var navigate = (0,react_router__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
-
   var _useToasts = (0,react_toast_notifications__WEBPACK_IMPORTED_MODULE_4__.useToasts)(),
-      addToast = _useToasts.addToast;
-
+    addToast = _useToasts.addToast;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState2 = _slicedToArray(_useState, 2),
-      count = _useState2[0],
-      setCount = _useState2[1];
-
+    _useState2 = _slicedToArray(_useState, 2),
+    count = _useState2[0],
+    setCount = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      token = _useState4[0],
-      setToken = _useState4[1];
-
+    _useState4 = _slicedToArray(_useState3, 2),
+    token = _useState4[0],
+    setToken = _useState4[1];
   var handleToken = function handleToken(_token) {
     setToken(_token);
   };
-
   var handleExpire = function handleExpire() {
     setToken("");
   };
-
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.auth;
   });
-
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
-    email: {
-      value: '',
-      error: 0
-    },
-    password: {
-      value: '',
-      error: 0
-    }
-  }),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      fields = _React$useState2[0],
-      setFields = _React$useState2[1];
-
+      email: {
+        value: '',
+        error: 0
+      },
+      password: {
+        value: '',
+        error: 0
+      }
+    }),
+    _React$useState2 = _slicedToArray(_React$useState, 2),
+    fields = _React$useState2[0],
+    setFields = _React$useState2[1];
   var inputChangeHandler = function inputChangeHandler(field, value, error) {
     setFields(_objectSpread(_objectSpread({}, fields), {}, _defineProperty({}, field, {
       value: value,
       error: error
     })));
   };
-
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
     var _user = {
@@ -117,18 +101,13 @@ var Login = function Login(props) {
         appearance: 'error',
         content: 'Some fields are invalid'
       }
-    });else if (count >= 3 && token == "") dispatch({
-      type: 'ADD_MESSAGE',
-      payload: {
-        appearance: 'error',
-        content: 'You have to solve the captcha'
-      }
-    });else {
+    });
+    // else if (count >= 3 && token == "") dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'error', content: 'You have to solve the captcha'}});
+    else {
       dispatch((0,_store_actions_auth__WEBPACK_IMPORTED_MODULE_2__.loginAction)(_user));
     }
     setCount(count + 1);
   };
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,_config_config__WEBPACK_IMPORTED_MODULE_6__.setMetaData)("Login - Cookie", "Log in to your Cookie account");
   }, []);
@@ -138,7 +117,7 @@ var Login = function Login(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "d-flex align-items-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
-          children: "Login\uD83D\uDC4B"
+          children: "Login"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Input_Input__WEBPACK_IMPORTED_MODULE_1__["default"], {
         title: "email",
@@ -146,7 +125,7 @@ var Login = function Login(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Input_Input__WEBPACK_IMPORTED_MODULE_1__["default"], {
         title: "password",
         inputChangeHandler: inputChangeHandler
-      }), count > 2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      }), count > 10 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "d-flex justify-content-center m-4",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_google_recaptcha__WEBPACK_IMPORTED_MODULE_7__["default"], {
           sitekey: "6LefPncgAAAAAKIUIUGkRQbQhU_NKfo1sOAXV949",
@@ -175,7 +154,6 @@ var Login = function Login(props) {
     })]
   });
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
 
 /***/ }),
@@ -193,53 +171,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
 
 
 
 var Input = function Input(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.title == "email" ? "email" : props.title == "username" ? "text" : "password"),
-      _useState2 = _slicedToArray(_useState, 2),
-      type = _useState2[0],
-      setType = _useState2[1];
-
+    _useState2 = _slicedToArray(_useState, 2),
+    type = _useState2[0],
+    setType = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      error = _useState4[0],
-      setError = _useState4[1];
-
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState6 = _slicedToArray(_useState5, 2),
-      errorMessage = _useState6[0],
-      setErrorMessage = _useState6[1];
-
+    _useState6 = _slicedToArray(_useState5, 2),
+    errorMessage = _useState6[0],
+    setErrorMessage = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState8 = _slicedToArray(_useState7, 2),
-      editing = _useState8[0],
-      setEditing = _useState8[1];
-
+    _useState8 = _slicedToArray(_useState7, 2),
+    editing = _useState8[0],
+    setEditing = _useState8[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (props.value != "" && props.value != undefined && props.value != null) changeHandler(props.value);
   }, [props.value]);
-
   var changeHandler = function changeHandler(event) {
     var text;
     var _error = 0;
     if (_typeof(event) == 'object') text = event.target.value;else text = event || "";
-
     if (text == "") {
       _error = 1;
       setErrorMessage("This field is required");
@@ -252,12 +216,10 @@ var Input = function Input(props) {
         }
       } else {
         _error = -1;
-
         if (props.title == "password" && text.length < 6) {
           _error = 1;
           setErrorMessage('Password must be at least 6 characters');
         }
-
         if (props.title == "username") {
           if (text.length < 3 || text.length > 30) {
             _error = 1;
@@ -269,19 +231,15 @@ var Input = function Input(props) {
         }
       }
     }
-
     setError(_error);
     props.inputChangeHandler(props.title, text, _error);
   };
-
   var focus = function focus() {
     setEditing(true);
   };
-
   var blur = function blur() {
     setEditing(false);
   };
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "mt-3",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -328,7 +286,6 @@ var Input = function Input(props) {
     }) : ""]
   });
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Input);
 
 /***/ }),
@@ -346,7 +303,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
 
 
 
@@ -372,7 +328,6 @@ var LoadingButton = function LoadingButton(props) {
     }) : '']
   });
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoadingButton);
 
 /***/ }),
@@ -647,7 +602,7 @@ function makeAsyncScript(getScriptURL, options) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ReCAPTCHA": () => (/* reexport safe */ _recaptcha__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   ReCAPTCHA: () => (/* reexport safe */ _recaptcha__WEBPACK_IMPORTED_MODULE_1__["default"]),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _recaptcha_wrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./recaptcha-wrapper */ "./node_modules/react-google-recaptcha/lib/esm/recaptcha-wrapper.js");

@@ -22,7 +22,7 @@ class LinkEmail extends Mailable
     public $email;
     public $avatar;
     public $display;
-    public $title;    
+    public $title;
 
     public function __construct($url, $username, $email, $avatar, $display, $title)
     {
@@ -41,6 +41,6 @@ class LinkEmail extends Mailable
      */
     public function build()
     {
-        return $this->from($address = 'noreply@cookie.link', $name = 'Cookie.link')->subject($this->username." has a link they want you to check out!")->view('mail.linkemail');
+        return $this->from($address = 'noreply@bookings247.co', $name = 'bookings247.co')->subject($this->username." has a link they want you to check out!")->view('mail.linkemail');
     }
 }

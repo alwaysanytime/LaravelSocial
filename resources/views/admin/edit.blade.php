@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Make the most of your social traffic">
-    <meta name="keywords" content="cookie, cookie.link, cookie link, link in bio, bio link, linkinbio">
+    <meta name="keywords" content="cookie, bookings247.co, cookie link, link in bio, bio link, linkinbio">
     <meta name="robots" content="index" />
 </head>
 <body style="height: 100% !important;">

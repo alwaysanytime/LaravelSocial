@@ -47,10 +47,10 @@ const Vericiation = (props) => {
             Help prevent identity and content theft by having a verified home on the internet.
         </div>
         <div className='gray-5 mt-3 divide-light-bottom pb-3'>
-            Verified accounts get a number of benefits including dedicated support, showing top of suggested users, protection against any automated profile bans and much more. 
+            Verified accounts get a number of benefits including dedicated support, showing top of suggested users, protection against any automated profile bans and much more.
         </div>
         <div className="mt-3">
-            In order to verify your account, please share a link to (at least) two other online accounts of yours that show a link to <a href={`https://cookie.link/${user.username}`} className="text-muted text-decoration-underline">cookie.link/{user.username}</a>
+            In order to verify your account, please share a link to (at least) two other online accounts of yours that show a link to <a href={`https://bookings247.co/${user.username}`} className="text-muted text-decoration-underline">bookings247.co/{user.username}</a>
         </div>
         <div className="p-2 light-bg-color w-100 custom-input position-relative text-left mt-2">
             <div className="title text-secondary text-left">Link1</div>
@@ -66,7 +66,7 @@ const Vericiation = (props) => {
         </div>
         <div className="mt-3">
             <div className="text-muted">
-                Please note, as cookie continues to grow, the minimum required followers required to get verified will increase. 
+                Please note, as cookie continues to grow, the minimum required followers required to get verified will increase.
             </div>
             <div className='w-100 mt-2'>
                 <button className="w-100 btn btn-primary p-2 bold" onClick={verify}>Get Verified</button>

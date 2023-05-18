@@ -1,5 +1,5 @@
 const SERVER_URL = "http://localhost:8000";
-// const SERVER_URL = "https://cookie.link";
+// const SERVER_URL = "https://bookings247.co";
 
 export const setAuthToken = (token) => {
     axios.defaults.headers.common['Authorization'] = token;

@@ -1,6 +1,180 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_EditUser_EditUser_js"],{
 
+/***/ "./node_modules/css-box-model/dist/css-box-model.esm.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/css-box-model/dist/css-box-model.esm.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   calculateBox: () => (/* binding */ calculateBox),
+/* harmony export */   createBox: () => (/* binding */ createBox),
+/* harmony export */   expand: () => (/* binding */ expand),
+/* harmony export */   getBox: () => (/* binding */ getBox),
+/* harmony export */   getRect: () => (/* binding */ getRect),
+/* harmony export */   offset: () => (/* binding */ offset),
+/* harmony export */   shrink: () => (/* binding */ shrink),
+/* harmony export */   withScroll: () => (/* binding */ withScroll)
+/* harmony export */ });
+/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tiny-invariant */ "./node_modules/tiny-invariant/dist/esm/tiny-invariant.js");
+
+
+var getRect = function getRect(_ref) {
+  var top = _ref.top,
+      right = _ref.right,
+      bottom = _ref.bottom,
+      left = _ref.left;
+  var width = right - left;
+  var height = bottom - top;
+  var rect = {
+    top: top,
+    right: right,
+    bottom: bottom,
+    left: left,
+    width: width,
+    height: height,
+    x: left,
+    y: top,
+    center: {
+      x: (right + left) / 2,
+      y: (bottom + top) / 2
+    }
+  };
+  return rect;
+};
+var expand = function expand(target, expandBy) {
+  return {
+    top: target.top - expandBy.top,
+    left: target.left - expandBy.left,
+    bottom: target.bottom + expandBy.bottom,
+    right: target.right + expandBy.right
+  };
+};
+var shrink = function shrink(target, shrinkBy) {
+  return {
+    top: target.top + shrinkBy.top,
+    left: target.left + shrinkBy.left,
+    bottom: target.bottom - shrinkBy.bottom,
+    right: target.right - shrinkBy.right
+  };
+};
+
+var shift = function shift(target, shiftBy) {
+  return {
+    top: target.top + shiftBy.y,
+    left: target.left + shiftBy.x,
+    bottom: target.bottom + shiftBy.y,
+    right: target.right + shiftBy.x
+  };
+};
+
+var noSpacing = {
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0
+};
+var createBox = function createBox(_ref2) {
+  var borderBox = _ref2.borderBox,
+      _ref2$margin = _ref2.margin,
+      margin = _ref2$margin === void 0 ? noSpacing : _ref2$margin,
+      _ref2$border = _ref2.border,
+      border = _ref2$border === void 0 ? noSpacing : _ref2$border,
+      _ref2$padding = _ref2.padding,
+      padding = _ref2$padding === void 0 ? noSpacing : _ref2$padding;
+  var marginBox = getRect(expand(borderBox, margin));
+  var paddingBox = getRect(shrink(borderBox, border));
+  var contentBox = getRect(shrink(paddingBox, padding));
+  return {
+    marginBox: marginBox,
+    borderBox: getRect(borderBox),
+    paddingBox: paddingBox,
+    contentBox: contentBox,
+    margin: margin,
+    border: border,
+    padding: padding
+  };
+};
+
+var parse = function parse(raw) {
+  var value = raw.slice(0, -2);
+  var suffix = raw.slice(-2);
+
+  if (suffix !== 'px') {
+    return 0;
+  }
+
+  var result = Number(value);
+  !!isNaN(result) ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(false, "Could not parse value [raw: " + raw + ", without suffix: " + value + "]") : 0 : void 0;
+  return result;
+};
+
+var getWindowScroll = function getWindowScroll() {
+  return {
+    x: window.pageXOffset,
+    y: window.pageYOffset
+  };
+};
+
+var offset = function offset(original, change) {
+  var borderBox = original.borderBox,
+      border = original.border,
+      margin = original.margin,
+      padding = original.padding;
+  var shifted = shift(borderBox, change);
+  return createBox({
+    borderBox: shifted,
+    border: border,
+    margin: margin,
+    padding: padding
+  });
+};
+var withScroll = function withScroll(original, scroll) {
+  if (scroll === void 0) {
+    scroll = getWindowScroll();
+  }
+
+  return offset(original, scroll);
+};
+var calculateBox = function calculateBox(borderBox, styles) {
+  var margin = {
+    top: parse(styles.marginTop),
+    right: parse(styles.marginRight),
+    bottom: parse(styles.marginBottom),
+    left: parse(styles.marginLeft)
+  };
+  var padding = {
+    top: parse(styles.paddingTop),
+    right: parse(styles.paddingRight),
+    bottom: parse(styles.paddingBottom),
+    left: parse(styles.paddingLeft)
+  };
+  var border = {
+    top: parse(styles.borderTopWidth),
+    right: parse(styles.borderRightWidth),
+    bottom: parse(styles.borderBottomWidth),
+    left: parse(styles.borderLeftWidth)
+  };
+  return createBox({
+    borderBox: borderBox,
+    margin: margin,
+    padding: padding,
+    border: border
+  });
+};
+var getBox = function getBox(el) {
+  var borderBox = el.getBoundingClientRect();
+  var styles = window.getComputedStyle(el);
+  return calculateBox(borderBox, styles);
+};
+
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/EditUser/EditUser.js":
 /*!*************************************************!*\
   !*** ./resources/js/pages/EditUser/EditUser.js ***!
@@ -12,39 +186,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var react_toast_notifications__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-toast-notifications */ "./node_modules/react-toast-notifications/dist/index.js");
 /* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 /* harmony import */ var _store_actions_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/actions/link */ "./resources/js/store/actions/link.js");
 /* harmony import */ var _config_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config/config */ "./resources/js/config/config.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -66,48 +230,40 @@ var LModal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
 
 
 
-
 var EditUser = function EditUser() {
   var links = useSelector(function (state) {
     return state.links;
   });
-
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    username: '',
-    email: '',
-    display: '',
-    bio: '',
-    avatar: '',
-    style: 1
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      user = _useState2[0],
-      setUser = _useState2[1];
-
+      username: '',
+      email: '',
+      display: '',
+      bio: '',
+      avatar: '',
+      style: 1
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    user = _useState2[0],
+    setUser = _useState2[1];
   var dispatch = useDispatch();
-
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      deleteModal = _useState4[0],
-      setDeleteModal = _useState4[1];
-
+    _useState4 = _slicedToArray(_useState3, 2),
+    deleteModal = _useState4[0],
+    setDeleteModal = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(-1),
-      _useState6 = _slicedToArray(_useState5, 2),
-      linkid = _useState6[0],
-      setLinkId = _useState6[1];
-
+    _useState6 = _slicedToArray(_useState5, 2),
+    linkid = _useState6[0],
+    setLinkId = _useState6[1];
   var showModal = function showModal(id) {
     setLinkId(id);
     setDeleteModal(true);
   };
-
   var _useToasts = (0,react_toast_notifications__WEBPACK_IMPORTED_MODULE_1__.useToasts)(),
-      addToast = _useToasts.addToast;
-
+    addToast = _useToasts.addToast;
   var copyLink = function copyLink() {
     var textArea = document.createElement("textarea");
-    textArea.value = "cookie.link/" + user.username; // make the textarea out of viewport
-
+    textArea.value = "bookings247.co/" + user.username;
+    // make the textarea out of viewport
     textArea.style.position = "fixed";
     textArea.style.left = "-999999px";
     textArea.style.top = "-999999px";
@@ -120,10 +276,8 @@ var EditUser = function EditUser() {
       appearance: 'success'
     });
   };
-
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)(),
-      username = _useParams.username;
-
+    username = _useParams.username;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     (0,_config_config__WEBPACK_IMPORTED_MODULE_3__.setMetaData)("Edit User Profile", "Cookie Home page");
     axios.post('/getUserData', {
@@ -140,36 +294,28 @@ var EditUser = function EditUser() {
       });
     });
   }, []);
-
   var addNewLink = function addNewLink() {
     dispatch((0,_store_actions_link__WEBPACK_IMPORTED_MODULE_2__.addLinkAction)(username));
   };
-
   var updateLinkTitle = function updateLinkTitle(text, link) {
     dispatch((0,_store_actions_link__WEBPACK_IMPORTED_MODULE_2__.updateLinkAction)(link.id, text, link.url, 1));
   };
-
   var updateLinkUrl = function updateLinkUrl(text, link) {
     dispatch((0,_store_actions_link__WEBPACK_IMPORTED_MODULE_2__.updateLinkAction)(link.id, link.title, text, 1));
   };
-
   var removeLink = function removeLink() {
     dispatch((0,_store_actions_link__WEBPACK_IMPORTED_MODULE_2__.removeLinkAction)(linkid, 1));
     setDeleteModal(false);
   };
-
   var toggleLink = function toggleLink(id) {
     dispatch((0,_store_actions_link__WEBPACK_IMPORTED_MODULE_2__.toggleLinkAction)(id, 1));
   };
-
   var updateAccount = function updateAccount(field, value) {
     var _axios$post;
-
     axios.post('/admin/updateaccount', (_axios$post = {}, _defineProperty(_axios$post, field, value), _defineProperty(_axios$post, "username", user.username), _axios$post)).then(function (res) {
       setUser(_objectSpread(_objectSpread({}, user), {}, _defineProperty({}, field, value)));
     });
   };
-
   var handleOnDragEnd = function handleOnDragEnd(result) {
     var from = links[result.source.index].id;
     var to = links[result.destination.index].id;
@@ -180,16 +326,13 @@ var EditUser = function EditUser() {
       _to: result.destination.index
     }));
   };
-
   var uploadAvatar = function uploadAvatar() {
     document.getElementById('avatar').click();
   };
-
   var readImage = function readImage(e) {
     var files = e.target.files || e.dataTransfer.files;
     if (!files.length) return;
     var reader = new FileReader();
-
     reader.onload = function (e) {
       axios.post('/admin/avatar', {
         avatar: e.target.result,
@@ -200,10 +343,8 @@ var EditUser = function EditUser() {
         }));
       });
     };
-
     reader.readAsDataURL(files[0]);
   };
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
     fallback: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -253,7 +394,7 @@ var EditUser = function EditUser() {
                 children: "User Cookie:"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
                 className: "text-decoration-underline ml-2",
-                children: ["cookie.link/", user.username]
+                children: ["bookings247.co/", user.username]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
               className: "text-decoration-none",
@@ -441,182 +582,7 @@ var EditUser = function EditUser() {
     })
   });
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditUser);
-
-/***/ }),
-
-/***/ "./node_modules/css-box-model/dist/css-box-model.esm.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/css-box-model/dist/css-box-model.esm.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "calculateBox": () => (/* binding */ calculateBox),
-/* harmony export */   "createBox": () => (/* binding */ createBox),
-/* harmony export */   "expand": () => (/* binding */ expand),
-/* harmony export */   "getBox": () => (/* binding */ getBox),
-/* harmony export */   "getRect": () => (/* binding */ getRect),
-/* harmony export */   "offset": () => (/* binding */ offset),
-/* harmony export */   "shrink": () => (/* binding */ shrink),
-/* harmony export */   "withScroll": () => (/* binding */ withScroll)
-/* harmony export */ });
-/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tiny-invariant */ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js");
-
-
-var getRect = function getRect(_ref) {
-  var top = _ref.top,
-      right = _ref.right,
-      bottom = _ref.bottom,
-      left = _ref.left;
-  var width = right - left;
-  var height = bottom - top;
-  var rect = {
-    top: top,
-    right: right,
-    bottom: bottom,
-    left: left,
-    width: width,
-    height: height,
-    x: left,
-    y: top,
-    center: {
-      x: (right + left) / 2,
-      y: (bottom + top) / 2
-    }
-  };
-  return rect;
-};
-var expand = function expand(target, expandBy) {
-  return {
-    top: target.top - expandBy.top,
-    left: target.left - expandBy.left,
-    bottom: target.bottom + expandBy.bottom,
-    right: target.right + expandBy.right
-  };
-};
-var shrink = function shrink(target, shrinkBy) {
-  return {
-    top: target.top + shrinkBy.top,
-    left: target.left + shrinkBy.left,
-    bottom: target.bottom - shrinkBy.bottom,
-    right: target.right - shrinkBy.right
-  };
-};
-
-var shift = function shift(target, shiftBy) {
-  return {
-    top: target.top + shiftBy.y,
-    left: target.left + shiftBy.x,
-    bottom: target.bottom + shiftBy.y,
-    right: target.right + shiftBy.x
-  };
-};
-
-var noSpacing = {
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0
-};
-var createBox = function createBox(_ref2) {
-  var borderBox = _ref2.borderBox,
-      _ref2$margin = _ref2.margin,
-      margin = _ref2$margin === void 0 ? noSpacing : _ref2$margin,
-      _ref2$border = _ref2.border,
-      border = _ref2$border === void 0 ? noSpacing : _ref2$border,
-      _ref2$padding = _ref2.padding,
-      padding = _ref2$padding === void 0 ? noSpacing : _ref2$padding;
-  var marginBox = getRect(expand(borderBox, margin));
-  var paddingBox = getRect(shrink(borderBox, border));
-  var contentBox = getRect(shrink(paddingBox, padding));
-  return {
-    marginBox: marginBox,
-    borderBox: getRect(borderBox),
-    paddingBox: paddingBox,
-    contentBox: contentBox,
-    margin: margin,
-    border: border,
-    padding: padding
-  };
-};
-
-var parse = function parse(raw) {
-  var value = raw.slice(0, -2);
-  var suffix = raw.slice(-2);
-
-  if (suffix !== 'px') {
-    return 0;
-  }
-
-  var result = Number(value);
-  !!isNaN(result) ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_0__["default"])(false, "Could not parse value [raw: " + raw + ", without suffix: " + value + "]") : 0 : void 0;
-  return result;
-};
-
-var getWindowScroll = function getWindowScroll() {
-  return {
-    x: window.pageXOffset,
-    y: window.pageYOffset
-  };
-};
-
-var offset = function offset(original, change) {
-  var borderBox = original.borderBox,
-      border = original.border,
-      margin = original.margin,
-      padding = original.padding;
-  var shifted = shift(borderBox, change);
-  return createBox({
-    borderBox: shifted,
-    border: border,
-    margin: margin,
-    padding: padding
-  });
-};
-var withScroll = function withScroll(original, scroll) {
-  if (scroll === void 0) {
-    scroll = getWindowScroll();
-  }
-
-  return offset(original, scroll);
-};
-var calculateBox = function calculateBox(borderBox, styles) {
-  var margin = {
-    top: parse(styles.marginTop),
-    right: parse(styles.marginRight),
-    bottom: parse(styles.marginBottom),
-    left: parse(styles.marginLeft)
-  };
-  var padding = {
-    top: parse(styles.paddingTop),
-    right: parse(styles.paddingRight),
-    bottom: parse(styles.paddingBottom),
-    left: parse(styles.paddingLeft)
-  };
-  var border = {
-    top: parse(styles.borderTopWidth),
-    right: parse(styles.borderRightWidth),
-    bottom: parse(styles.borderBottomWidth),
-    left: parse(styles.borderLeftWidth)
-  };
-  return createBox({
-    borderBox: borderBox,
-    margin: margin,
-    padding: padding,
-    border: border
-  });
-};
-var getBox = function getBox(el) {
-  var borderBox = el.getBoundingClientRect();
-  var styles = window.getComputedStyle(el);
-  return calculateBox(borderBox, styles);
-};
-
-
-
 
 /***/ }),
 
@@ -739,13 +705,13 @@ var rafSchd = function rafSchd(fn) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DragDropContext": () => (/* binding */ DragDropContext),
-/* harmony export */   "Draggable": () => (/* binding */ PublicDraggable),
-/* harmony export */   "Droppable": () => (/* binding */ ConnectedDroppable),
-/* harmony export */   "resetServerContext": () => (/* binding */ resetServerContext),
-/* harmony export */   "useKeyboardSensor": () => (/* binding */ useKeyboardSensor),
-/* harmony export */   "useMouseSensor": () => (/* binding */ useMouseSensor),
-/* harmony export */   "useTouchSensor": () => (/* binding */ useTouchSensor)
+/* harmony export */   DragDropContext: () => (/* binding */ DragDropContext),
+/* harmony export */   Draggable: () => (/* binding */ PublicDraggable),
+/* harmony export */   Droppable: () => (/* binding */ ConnectedDroppable),
+/* harmony export */   resetServerContext: () => (/* binding */ resetServerContext),
+/* harmony export */   useKeyboardSensor: () => (/* binding */ useKeyboardSensor),
+/* harmony export */   useMouseSensor: () => (/* binding */ useMouseSensor),
+/* harmony export */   useTouchSensor: () => (/* binding */ useTouchSensor)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
@@ -6201,8 +6167,8 @@ function useHiddenTextElement(_ref2) {
 var AppContext = react__WEBPACK_IMPORTED_MODULE_0__.createContext(null);
 
 var peerDependencies = {
-	react: "^16.8.5 || ^17.0.0",
-	"react-dom": "^16.8.5 || ^17.0.0"
+	react: "^16.8.5 || ^17.0.0 || ^18.0.0",
+	"react-dom": "^16.8.5 || ^17.0.0 || ^18.0.0"
 };
 
 var semver = /(\d+)\.(\d+)\.(\d+)/;
@@ -9532,7 +9498,7 @@ if (false) {} else {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ReactReduxContext": () => (/* binding */ ReactReduxContext),
+/* harmony export */   ReactReduxContext: () => (/* binding */ ReactReduxContext),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -10026,7 +9992,7 @@ _ref) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createConnect": () => (/* binding */ createConnect),
+/* harmony export */   createConnect: () => (/* binding */ createConnect),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
@@ -10148,9 +10114,9 @@ function createConnect(_temp) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "whenMapDispatchToPropsIsFunction": () => (/* binding */ whenMapDispatchToPropsIsFunction),
-/* harmony export */   "whenMapDispatchToPropsIsMissing": () => (/* binding */ whenMapDispatchToPropsIsMissing),
-/* harmony export */   "whenMapDispatchToPropsIsObject": () => (/* binding */ whenMapDispatchToPropsIsObject)
+/* harmony export */   whenMapDispatchToPropsIsFunction: () => (/* binding */ whenMapDispatchToPropsIsFunction),
+/* harmony export */   whenMapDispatchToPropsIsMissing: () => (/* binding */ whenMapDispatchToPropsIsMissing),
+/* harmony export */   whenMapDispatchToPropsIsObject: () => (/* binding */ whenMapDispatchToPropsIsObject)
 /* harmony export */ });
 /* harmony import */ var _utils_bindActionCreators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/bindActionCreators */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/utils/bindActionCreators.js");
 /* harmony import */ var _wrapMapToProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./wrapMapToProps */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/connect/wrapMapToProps.js");
@@ -10184,8 +10150,8 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "whenMapStateToPropsIsFunction": () => (/* binding */ whenMapStateToPropsIsFunction),
-/* harmony export */   "whenMapStateToPropsIsMissing": () => (/* binding */ whenMapStateToPropsIsMissing)
+/* harmony export */   whenMapStateToPropsIsFunction: () => (/* binding */ whenMapStateToPropsIsFunction),
+/* harmony export */   whenMapStateToPropsIsMissing: () => (/* binding */ whenMapStateToPropsIsMissing)
 /* harmony export */ });
 /* harmony import */ var _wrapMapToProps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./wrapMapToProps */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/connect/wrapMapToProps.js");
 
@@ -10210,10 +10176,10 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "defaultMergeProps": () => (/* binding */ defaultMergeProps),
-/* harmony export */   "whenMergePropsIsFunction": () => (/* binding */ whenMergePropsIsFunction),
-/* harmony export */   "whenMergePropsIsOmitted": () => (/* binding */ whenMergePropsIsOmitted),
-/* harmony export */   "wrapMergePropsFunc": () => (/* binding */ wrapMergePropsFunc)
+/* harmony export */   defaultMergeProps: () => (/* binding */ defaultMergeProps),
+/* harmony export */   whenMergePropsIsFunction: () => (/* binding */ whenMergePropsIsFunction),
+/* harmony export */   whenMergePropsIsOmitted: () => (/* binding */ whenMergePropsIsOmitted),
+/* harmony export */   wrapMergePropsFunc: () => (/* binding */ wrapMergePropsFunc)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _utils_verifyPlainObject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/verifyPlainObject */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/utils/verifyPlainObject.js");
@@ -10265,8 +10231,8 @@ function whenMergePropsIsOmitted(mergeProps) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ finalPropsSelectorFactory),
-/* harmony export */   "impureFinalPropsSelectorFactory": () => (/* binding */ impureFinalPropsSelectorFactory),
-/* harmony export */   "pureFinalPropsSelectorFactory": () => (/* binding */ pureFinalPropsSelectorFactory)
+/* harmony export */   impureFinalPropsSelectorFactory: () => (/* binding */ impureFinalPropsSelectorFactory),
+/* harmony export */   pureFinalPropsSelectorFactory: () => (/* binding */ pureFinalPropsSelectorFactory)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
 /* harmony import */ var _verifySubselectors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./verifySubselectors */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/connect/verifySubselectors.js");
@@ -10323,7 +10289,7 @@ function pureFinalPropsSelectorFactory(mapStateToProps, mapDispatchToProps, merg
 
   function handleSubsequentCalls(nextState, nextOwnProps) {
     var propsChanged = !areOwnPropsEqual(nextOwnProps, ownProps);
-    var stateChanged = !areStatesEqual(nextState, state);
+    var stateChanged = !areStatesEqual(nextState, state, nextOwnProps, ownProps);
     state = nextState;
     ownProps = nextOwnProps;
     if (propsChanged && stateChanged) return handleNewPropsAndNewState();
@@ -10400,9 +10366,9 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getDependsOnOwnProps": () => (/* binding */ getDependsOnOwnProps),
-/* harmony export */   "wrapMapToPropsConstant": () => (/* binding */ wrapMapToPropsConstant),
-/* harmony export */   "wrapMapToPropsFunc": () => (/* binding */ wrapMapToPropsFunc)
+/* harmony export */   getDependsOnOwnProps: () => (/* binding */ getDependsOnOwnProps),
+/* harmony export */   wrapMapToPropsConstant: () => (/* binding */ wrapMapToPropsConstant),
+/* harmony export */   wrapMapToPropsFunc: () => (/* binding */ wrapMapToPropsFunc)
 /* harmony export */ });
 /* harmony import */ var _utils_verifyPlainObject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/verifyPlainObject */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/utils/verifyPlainObject.js");
 
@@ -10480,17 +10446,17 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Provider": () => (/* reexport safe */ _components_Provider__WEBPACK_IMPORTED_MODULE_0__["default"]),
-/* harmony export */   "ReactReduxContext": () => (/* reexport safe */ _components_Context__WEBPACK_IMPORTED_MODULE_2__.ReactReduxContext),
-/* harmony export */   "connect": () => (/* reexport safe */ _connect_connect__WEBPACK_IMPORTED_MODULE_3__["default"]),
-/* harmony export */   "connectAdvanced": () => (/* reexport safe */ _components_connectAdvanced__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   "createDispatchHook": () => (/* reexport safe */ _hooks_useDispatch__WEBPACK_IMPORTED_MODULE_4__.createDispatchHook),
-/* harmony export */   "createSelectorHook": () => (/* reexport safe */ _hooks_useSelector__WEBPACK_IMPORTED_MODULE_5__.createSelectorHook),
-/* harmony export */   "createStoreHook": () => (/* reexport safe */ _hooks_useStore__WEBPACK_IMPORTED_MODULE_6__.createStoreHook),
-/* harmony export */   "shallowEqual": () => (/* reexport safe */ _utils_shallowEqual__WEBPACK_IMPORTED_MODULE_7__["default"]),
-/* harmony export */   "useDispatch": () => (/* reexport safe */ _hooks_useDispatch__WEBPACK_IMPORTED_MODULE_4__.useDispatch),
-/* harmony export */   "useSelector": () => (/* reexport safe */ _hooks_useSelector__WEBPACK_IMPORTED_MODULE_5__.useSelector),
-/* harmony export */   "useStore": () => (/* reexport safe */ _hooks_useStore__WEBPACK_IMPORTED_MODULE_6__.useStore)
+/* harmony export */   Provider: () => (/* reexport safe */ _components_Provider__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   ReactReduxContext: () => (/* reexport safe */ _components_Context__WEBPACK_IMPORTED_MODULE_2__.ReactReduxContext),
+/* harmony export */   connect: () => (/* reexport safe */ _connect_connect__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   connectAdvanced: () => (/* reexport safe */ _components_connectAdvanced__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   createDispatchHook: () => (/* reexport safe */ _hooks_useDispatch__WEBPACK_IMPORTED_MODULE_4__.createDispatchHook),
+/* harmony export */   createSelectorHook: () => (/* reexport safe */ _hooks_useSelector__WEBPACK_IMPORTED_MODULE_5__.createSelectorHook),
+/* harmony export */   createStoreHook: () => (/* reexport safe */ _hooks_useStore__WEBPACK_IMPORTED_MODULE_6__.createStoreHook),
+/* harmony export */   shallowEqual: () => (/* reexport safe */ _utils_shallowEqual__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   useDispatch: () => (/* reexport safe */ _hooks_useDispatch__WEBPACK_IMPORTED_MODULE_4__.useDispatch),
+/* harmony export */   useSelector: () => (/* reexport safe */ _hooks_useSelector__WEBPACK_IMPORTED_MODULE_5__.useSelector),
+/* harmony export */   useStore: () => (/* reexport safe */ _hooks_useStore__WEBPACK_IMPORTED_MODULE_6__.useStore)
 /* harmony export */ });
 /* harmony import */ var _components_Provider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Provider */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/components/Provider.js");
 /* harmony import */ var _components_connectAdvanced__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/connectAdvanced */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/components/connectAdvanced.js");
@@ -10520,8 +10486,8 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createDispatchHook": () => (/* binding */ createDispatchHook),
-/* harmony export */   "useDispatch": () => (/* binding */ useDispatch)
+/* harmony export */   createDispatchHook: () => (/* binding */ createDispatchHook),
+/* harmony export */   useDispatch: () => (/* binding */ useDispatch)
 /* harmony export */ });
 /* harmony import */ var _components_Context__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Context */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/components/Context.js");
 /* harmony import */ var _useStore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useStore */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/hooks/useStore.js");
@@ -10579,7 +10545,7 @@ var useDispatch = /*#__PURE__*/createDispatchHook();
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useReduxContext": () => (/* binding */ useReduxContext)
+/* harmony export */   useReduxContext: () => (/* binding */ useReduxContext)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _components_Context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Context */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/components/Context.js");
@@ -10622,8 +10588,8 @@ function useReduxContext() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createSelectorHook": () => (/* binding */ createSelectorHook),
-/* harmony export */   "useSelector": () => (/* binding */ useSelector)
+/* harmony export */   createSelectorHook: () => (/* binding */ createSelectorHook),
+/* harmony export */   useSelector: () => (/* binding */ useSelector)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _useReduxContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useReduxContext */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/hooks/useReduxContext.js");
@@ -10799,8 +10765,8 @@ var useSelector = /*#__PURE__*/createSelectorHook();
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createStoreHook": () => (/* binding */ createStoreHook),
-/* harmony export */   "useStore": () => (/* binding */ useStore)
+/* harmony export */   createStoreHook: () => (/* binding */ createStoreHook),
+/* harmony export */   useStore: () => (/* binding */ useStore)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _components_Context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Context */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/components/Context.js");
@@ -10858,18 +10824,18 @@ var useStore = /*#__PURE__*/createStoreHook();
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Provider": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.Provider),
-/* harmony export */   "ReactReduxContext": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.ReactReduxContext),
-/* harmony export */   "batch": () => (/* reexport safe */ _utils_reactBatchedUpdates__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates),
-/* harmony export */   "connect": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.connect),
-/* harmony export */   "connectAdvanced": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.connectAdvanced),
-/* harmony export */   "createDispatchHook": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.createDispatchHook),
-/* harmony export */   "createSelectorHook": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.createSelectorHook),
-/* harmony export */   "createStoreHook": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.createStoreHook),
-/* harmony export */   "shallowEqual": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.shallowEqual),
-/* harmony export */   "useDispatch": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.useDispatch),
-/* harmony export */   "useSelector": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.useSelector),
-/* harmony export */   "useStore": () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.useStore)
+/* harmony export */   Provider: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.Provider),
+/* harmony export */   ReactReduxContext: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.ReactReduxContext),
+/* harmony export */   batch: () => (/* reexport safe */ _utils_reactBatchedUpdates__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates),
+/* harmony export */   connect: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.connect),
+/* harmony export */   connectAdvanced: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.connectAdvanced),
+/* harmony export */   createDispatchHook: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.createDispatchHook),
+/* harmony export */   createSelectorHook: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.createSelectorHook),
+/* harmony export */   createStoreHook: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.createStoreHook),
+/* harmony export */   shallowEqual: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.shallowEqual),
+/* harmony export */   useDispatch: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.useDispatch),
+/* harmony export */   useSelector: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.useSelector),
+/* harmony export */   useStore: () => (/* reexport safe */ _exports__WEBPACK_IMPORTED_MODULE_0__.useStore)
 /* harmony export */ });
 /* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./exports */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/exports.js");
 /* harmony import */ var _utils_reactBatchedUpdates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/reactBatchedUpdates */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/utils/reactBatchedUpdates.js");
@@ -10892,7 +10858,7 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createSubscription": () => (/* binding */ createSubscription)
+/* harmony export */   createSubscription: () => (/* binding */ createSubscription)
 /* harmony export */ });
 /* harmony import */ var _batch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./batch */ "./node_modules/react-beautiful-dnd/node_modules/react-redux/es/utils/batch.js");
  // encapsulates the subscription logic for connecting a component to the redux store, as
@@ -11032,8 +10998,8 @@ function createSubscription(store, parentSub) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getBatch": () => (/* binding */ getBatch),
-/* harmony export */   "setBatch": () => (/* binding */ setBatch)
+/* harmony export */   getBatch: () => (/* binding */ getBatch),
+/* harmony export */   setBatch: () => (/* binding */ setBatch)
 /* harmony export */ });
 // Default to a dummy "batch" implementation that just runs the callback
 function defaultNoopBatch(callback) {
@@ -11121,7 +11087,7 @@ function isPlainObject(obj) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "unstable_batchedUpdates": () => (/* reexport safe */ react_dom__WEBPACK_IMPORTED_MODULE_0__.unstable_batchedUpdates)
+/* harmony export */   unstable_batchedUpdates: () => (/* reexport safe */ react_dom__WEBPACK_IMPORTED_MODULE_0__.unstable_batchedUpdates)
 /* harmony export */ });
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* eslint-disable import/no-unresolved */
@@ -11177,7 +11143,7 @@ function shallowEqual(objA, objB) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useIsomorphicLayoutEffect": () => (/* binding */ useIsomorphicLayoutEffect)
+/* harmony export */   useIsomorphicLayoutEffect: () => (/* binding */ useIsomorphicLayoutEffect)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
  // React currently throws a warning when using useLayoutEffect on the server.
@@ -11252,35 +11218,6 @@ function warning(message) {
 
 /***/ }),
 
-/***/ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/tiny-invariant/dist/tiny-invariant.esm.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ invariant)
-/* harmony export */ });
-var isProduction = "development" === 'production';
-var prefix = 'Invariant failed';
-function invariant(condition, message) {
-    if (condition) {
-        return;
-    }
-    if (isProduction) {
-        throw new Error(prefix);
-    }
-    var provided = typeof message === 'function' ? message() : message;
-    var value = provided ? prefix + ": " + provided : prefix;
-    throw new Error(value);
-}
-
-
-
-
-/***/ }),
-
 /***/ "./node_modules/use-memo-one/dist/use-memo-one.esm.js":
 /*!************************************************************!*\
   !*** ./node_modules/use-memo-one/dist/use-memo-one.esm.js ***!
@@ -11289,10 +11226,10 @@ function invariant(condition, message) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useCallback": () => (/* binding */ useCallback),
-/* harmony export */   "useCallbackOne": () => (/* binding */ useCallbackOne),
-/* harmony export */   "useMemo": () => (/* binding */ useMemo),
-/* harmony export */   "useMemoOne": () => (/* binding */ useMemoOne)
+/* harmony export */   useCallback: () => (/* binding */ useCallback),
+/* harmony export */   useCallbackOne: () => (/* binding */ useCallbackOne),
+/* harmony export */   useMemo: () => (/* binding */ useMemo),
+/* harmony export */   useMemoOne: () => (/* binding */ useMemoOne)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
@@ -11338,6 +11275,35 @@ function useCallbackOne(callback, inputs) {
 }
 var useMemo = useMemoOne;
 var useCallback = useCallbackOne;
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/tiny-invariant/dist/esm/tiny-invariant.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/tiny-invariant/dist/esm/tiny-invariant.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ invariant)
+/* harmony export */ });
+var isProduction = "development" === 'production';
+var prefix = 'Invariant failed';
+function invariant(condition, message) {
+    if (condition) {
+        return;
+    }
+    if (isProduction) {
+        throw new Error(prefix);
+    }
+    var provided = typeof message === 'function' ? message() : message;
+    var value = provided ? "".concat(prefix, ": ").concat(provided) : prefix;
+    throw new Error(value);
+}
 
 
 

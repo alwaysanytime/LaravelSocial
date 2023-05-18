@@ -3,8 +3,9 @@ import SERVER_URL from '../../config/config';
 
 export const loginAction = (payload) => dispatch => {
     dispatch({type: 'START_LOADING'});
-    axios.post('/login', payload)
+    axios.post( SERVER_URL + '/api/login', payload)
         .then(res => {
+            console.log('res', res);
             if (res.status == 200) {
                 dispatch({type: 'SET_USER', payload:res.data});
                 dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'success', content: 'Loggedin Successfully'}});
@@ -16,7 +17,7 @@ export const loginAction = (payload) => dispatch => {
 
 export const registerAction = (payload) => dispatch => {
     dispatch({type: 'START_LOADING'});
-    axios.post('/register', payload)
+    axios.post(SERVER_URL + '/api/register', payload)
         .then(res => {
             if (res.status == 200) {
                 dispatch({type: 'SET_USER', payload:res.data});
@@ -28,15 +29,15 @@ export const registerAction = (payload) => dispatch => {
 }
 
 export const logoutAction = () => dispatch => {
-    axios.get('/logout')
+    axios.get(SERVER_URL + '/api/logout')
         .then(res => {
             dispatch({type: 'LOGOUT'});
         });
-        
+
 }
 
 export const updateaccountAction = (payload) => dispatch => {
-    axios.post('/updateaccount', payload)
+    axios.post(SERVER_URL + '/api/updateaccount', payload)
         .then(res => {
             if (res.status == 200) {
                 dispatch({type: 'UPDATE_ACCOUNT', payload});
@@ -46,7 +47,7 @@ export const updateaccountAction = (payload) => dispatch => {
 }
 
 export const updatePasswordAction = (payload) => dispatch => {
-    axios.post('/changepassword', payload)
+    axios.post(SERVER_URL + '/api/changepassword', payload)
         .then(res => {
             if (res.status == 200)
                 dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'success', content: 'Password Changed Successfully'}});
@@ -55,7 +56,7 @@ export const updatePasswordAction = (payload) => dispatch => {
 }
 
 export const verificationAction = () => dispatch => {
-    axios.get('/email/verification')
+    axios.get(SERVER_URL + '/api/email/verification')
         .then(res => {
             if (res.status == 200)
                 dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'success', content: 'Verification Link sent'}});
@@ -64,7 +65,7 @@ export const verificationAction = () => dispatch => {
 }
 
 export const uploadAction = (payload) => dispatch => {
-    axios.post('/avatar', {avatar: payload.avatar})
+    axios.post(SERVER_URL + '/api/avatar', {avatar: payload.avatar})
         .then(res => {
             if (res.status == 200) {
                 dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'success', content: 'Uploaded Successfully'}});
@@ -75,21 +76,21 @@ export const uploadAction = (payload) => dispatch => {
 }
 
 export const verifyCheckAction = () => dispatch => {
-    axios.post('/verifycheck')
+    axios.post(SERVER_URL + '/api/verifycheck')
         .then(res => {
             if (res.status == 200) {
                 dispatch({type: 'SET_VERIFY', payload: res.data.verify})
             }
             else  dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'error', content: res.response.data.message}});
         });
-    axios.post('/getavatar')
+    axios.post(SERVER_URL + '/api/getavatar')
         .then(res => {
             dispatch({type: 'SET_AVATAR', payload: res.data.avatar})
         });
 }
 
 export const getCurrentUserAction = () => dispatch => {
-    axios.post('/getcurrentuser')
+    axios.post(SERVER_URL + '/api/getcurrentuser')
         .then(res => {
             if (res.status == 200) {
                 dispatch({type: 'SET_USER', payload:res.data});
@@ -106,7 +107,7 @@ export const getCurrentUserAction = () => dispatch => {
 }
 
 export const toggleCompactAction = () => dispatch => {
-    axios.post('/togglesocial', {show: false})
+    axios.post(SERVER_URL + '/api/togglesocial', {show: false})
         .then(res => {
             if (res.status == 200) {
                 dispatch({type: 'TOGGLE_SOCIAL', payload:res.data});
@@ -116,7 +117,7 @@ export const toggleCompactAction = () => dispatch => {
 }
 
 export const toggleSocialAction = (action = "social") => dispatch => {
-    axios.post('/togglesocial', {show: true, action})
+    axios.post(SERVER_URL + '/api/togglesocial', {show: true, action})
         .then(res => {
             if (res.status == 200) {
                 if (action == "social") dispatch({type: 'TOGGLE_SHOWSOCIAL'});

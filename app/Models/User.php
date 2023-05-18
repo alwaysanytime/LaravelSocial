@@ -6,23 +6,27 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'username', 'email', 'password',
+    ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -30,27 +34,18 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function links() {
-        return $this->hasMany(Link::class, 'userid')->orderBy('id', 'DESC');
-    }
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
 
-    public function following() {
-        return $this->belongsToMany(User::class, 'followers', 'follower', 'following')->whereNotNull('users.email_verified_at')->where('users.deleted', 0)->where('users.enable', 1)->withTimestamps();
-    }
-
-    public function follower() {
-        return $this->belongsToMany(User::class, 'followers', 'following', 'follower')->whereNotNull('users.email_verified_at')->where('users.deleted', 0)->where('users.enable', 1)->withTimestamps();
-    }
-
-    public function style() {
-        return $this->belongsTo(Style::class, 'style');
-    }
 }

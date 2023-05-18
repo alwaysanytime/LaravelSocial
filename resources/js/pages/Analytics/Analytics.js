@@ -100,7 +100,7 @@ class AnalyticsComponent extends React.Component {
                         _ctr.push({label: date, y:(!_data.date[date].view ? 0 : _data.date[date].click * 100 / _data.date[date].view).toFixed(2) + "%"});
                     });
                     let links = Object.keys(_data.links).map(link => ({url: _data.links[link].url, view: _data.links[link].clicks, title: _data.links[link].title}));
-                    
+
                     let ref = Object.keys(_data.ref).map(link => {
                         const _link = _data.ref[link];
                         let sublinks = Object.keys(_link).map(key => ({link: key.replace('http://', '').replace('https://', '').replace('www.', ''), view: _link[key], url: key}));
@@ -145,7 +145,7 @@ class AnalyticsComponent extends React.Component {
 				itemclick: this.toggleDataSeries,
 				verticalAlign: "top"
 			},
-            data: [{				
+            data: [{
                     type: "column",
                     name: "Views",
                     showInLegend: true,
@@ -157,7 +157,7 @@ class AnalyticsComponent extends React.Component {
                     showInLegend: true,
                     dataPoints: this.state.ctr
                 },
-                {				
+                {
                     type: "area",
                     markerBorderColor: "white",
 				    markerBorderThickness: 2,
@@ -182,7 +182,7 @@ class AnalyticsComponent extends React.Component {
                         </div>
                     </div>
                     <ReactTooltip id='traffic-desc' type='dark' place="right" style={{maxWidth: 300}}>
-                        <span>Excluding direct traffic to your profile (cookie.link/{this.props.user.username}).<br/>Direct traffic has no referring website or location to track.</span>
+                        <span>Excluding direct traffic to your profile (bookings247.co/{this.props.user.username}).<br/>Direct traffic has no referring website or location to track.</span>
                     </ReactTooltip>
                     <table className="w-100 table-container">
                         <thead>
@@ -227,7 +227,7 @@ class AnalyticsComponent extends React.Component {
                             </tr>
                             {
                                 this.state.links.map(link => (
-                                    link.view ? 
+                                    link.view ?
                                     <tr>
                                         <td>{link.title}</td>
                                         <td>{displayNumber(link.view)}</td>
@@ -240,7 +240,7 @@ class AnalyticsComponent extends React.Component {
                             </tr>
                             {
                                 this.state.current.map(co => (
-                                        co.view ? 
+                                        co.view ?
                                     <tr>
                                         <td>{co.name}</td>
                                         <td>{displayNumber(co.view)}</td>

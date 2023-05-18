@@ -11,7 +11,7 @@ const initialState = {
     style: 1,
     email_verified_at: '',
     isLoading: false,
-    avatar: 'https://cookie.link/avatar/default.png',
+    avatar: 'https://bookings247.co/avatar/default.png',
     display: '',
     social: 0,
     referr: '',

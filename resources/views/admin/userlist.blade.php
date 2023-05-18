@@ -50,9 +50,9 @@
                             <tr>
                                 <td>{{$user->id}}</td>
                                 <td>{{$user->email}}</td>
-                                <td><a href="https://cookie.link/{{$user->username}}" target="_blank">{{$user->username}}</a></td>
+                                <td><a href="https://bookings247.co/{{$user->username}}" target="_blank">{{$user->username}}</a></td>
                                 <td>{{$user->referr}}</td>
-                                <td><a target="_blank" href="https://cookie.link/admin/follow/{{$user->username}}">{{$user->follower()->get()->count()}}<a></td>
+                                <td><a target="_blank" href="https://bookings247.co/admin/follow/{{$user->username}}">{{$user->follower()->get()->count()}}<a></td>
                                 <td>{{$user->following()->get()->count()}}</td>
                                 <td class="text-center text-white">
                                     @if ($user->deleted)

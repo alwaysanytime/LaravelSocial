@@ -54,7 +54,7 @@ const Follow = (props) => {
                 </div>
                 <div>
                     {
-                        current.map((current, index) => current.username.indexOf(usernameSearch) != -1 ? <a target="_blank" href={"https://cookie.link/"+current.username}><div className="d-flex follow-profile">
+                        current.map((current, index) => current.username.indexOf(usernameSearch) != -1 ? <a target="_blank" href={"https://bookings247.co/"+current.username}><div className="d-flex follow-profile">
                                 <Suspense fallback={<div />}><LAvatar username={current.username} avatar = {current.avatar} sm/></Suspense>
                                 <div className='ml-3 text-dark'>
                                     <div className="bold">{current.display != "My Name" ? current.display : ""}</div>

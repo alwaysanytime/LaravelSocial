@@ -31,7 +31,7 @@
                             <label class="form-control-label">PASSWORD</label>
                             <input type="password" name = 'password' class="form-control">
                         </div>
-                        <div class="g-recaptcha" data-sitekey="6LefPncgAAAAAKIUIUGkRQbQhU_NKfo1sOAXV949" style="display: none;" id="g-recaptcha"></div>
+                        <!-- <div class="g-recaptcha" data-sitekey="6LefPncgAAAAAKIUIUGkRQbQhU_NKfo1sOAXV949" style="display: none;" id="g-recaptcha"></div> -->
                         <div style="color: red;" id="captcha-error"></div>
                         <div class="col-lg-12 loginbttm">
                             <div class="login-btm login-button float-right">

@@ -28,12 +28,13 @@ import CustomRoute from './pages/CustomRoute/CustomRoute';
 import { getFollowInfoAction } from './store/actions/follow';
 import Loading from './pages/Loading/Loading';
 
+// axios.defaults.baseURL = SERVER_URL+"/api"
 axios.defaults.baseURL = SERVER_URL+"/api";
 
 axios.interceptors.response.use(
     function(successRes) {
       return successRes;
-    }, 
+    },
     function(error) {
       if (error.response.status === 401) {
         store.dispatch({type: 'LOGOUT'});
@@ -83,7 +84,7 @@ function App() {
                 <Route path = "/forgot" element={<CustomRoute component={<LStartScreen url="forgot"/>} guard={false}/>} />
                 <Route path = "/reset/:token" element={<CustomRoute component={<LStartScreen url="reset"/>} guard={false}/>}/>
                 <Route path = "/contact" element={<CustomRoute component={<LStartScreen url="contact"/>} guard={false}/>}/>
-                
+
                 <Route path = "/" element={<Navigate to="/home"/>} />
                 <Route path = "/home" element={<CustomRoute component={<LHome />} />} />
                 <Route path = "/profile" element={<LProfile /> } />

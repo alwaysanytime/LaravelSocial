@@ -58,7 +58,7 @@ const Login = (props) => {
         }
         if (fields.email.error != -1 || fields.password.error != -1)
             dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'error', content: 'Some fields are invalid'}});
-        else if (count >= 3 && token == "") dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'error', content: 'You have to solve the captcha'}});
+        // else if (count >= 3 && token == "") dispatch({type: 'ADD_MESSAGE', payload: {appearance: 'error', content: 'You have to solve the captcha'}});
         else {
             dispatch(loginAction(_user));
         }

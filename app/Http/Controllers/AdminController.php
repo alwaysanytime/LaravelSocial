@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
-use App\Models\Feedback;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Link;
@@ -128,7 +127,7 @@ class AdminController extends Controller
         $user = User::where('username', $current_url)->first();
         $referrer = request()->headers->get('referer');
         $host = parse_url($referrer, PHP_URL_HOST);
-        if ($host && $host != "" && $user && $host != "cookie.link") {
+        if ($host && $host != "" && $user && $host != "bookings247.co") {
             $referrer = new Referrer(['referrer' => $referrer, 'host' => $host, 'username' => $current_url]);
             $referrer->save();
         }
@@ -139,9 +138,9 @@ class AdminController extends Controller
                 'bio' => '',
                 'avatar' => '',
             ]);
-        } 
+        }
         return view('welcome', ['user' => $user]);
-        // return view('user.profile', ['user' => $user, 'links' => $user->links()->get(), 'style' => $user->style()->get()->first()]);        
+        // return view('user.profile', ['user' => $user, 'links' => $user->links()->get(), 'style' => $user->style()->get()->first()]);
     }
 
     public function edit(Request $req) {
@@ -215,7 +214,7 @@ class AdminController extends Controller
         $styles = Style::all();
         return view('admin.styles', ['styles' => $styles]);
     }
-    
+
     public function profile(Request $req) {
         $user = User::where('username', $req->username)->get()->first();
         if (!$user) {
@@ -228,12 +227,6 @@ class AdminController extends Controller
         return view('admin.profile', ['user' => $user]);
     }
 
-    public function readfeedback(Request $req) {
-        $feedback = Feedback::find($req->id);
-        $feedback->read = 1;
-        $feedback->save();
-        return "success";
-    }
 
     public function verify(Request $req) {
         $user = User::where('hash', $req->hash)->first();
@@ -262,10 +255,6 @@ class AdminController extends Controller
         return view('admin.userlist', ['users' => $users]);
     }
 
-    public function feedback(Request $req) {
-        $feedbacks = Feedback::orderBy('id', 'DESC')->paginate(15);
-        return view('admin.feedback', ['feedbacks' => $feedbacks]);
-    }
 
     public function toggle(Request $req) {
         $user = User::find($req->id);

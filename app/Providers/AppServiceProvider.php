@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-use App\Models\Feedback;
 use App\Models\Verification;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $unread = Feedback::where('read', 0)->get()->count();
-        View::share('data', ['unread' => $unread, 'pending' => 2]);
+        //
     }
 }

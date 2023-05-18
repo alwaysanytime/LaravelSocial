@@ -37,7 +37,7 @@ const ColorStyle = () => {
 
     const copyLink = () => {
         let textArea = document.createElement("textarea");
-        textArea.value = "cookie.link/" + user.username;
+        textArea.value = "bookings247.co/" + user.username;
         // make the textarea out of viewport
         textArea.style.position = "fixed";
         textArea.style.left = "-999999px";
@@ -56,7 +56,7 @@ const ColorStyle = () => {
             <div className="header">
                 <div className="d-none d-xl-flex col-xl-7 title"><Link to="/home" className='mr-4 text-dark'><i className="bi bi-arrow-left text-dark"></i></Link>Color Style</div>
                 <div className="col-12 col-xl-5 d-flex justify-content-between">
-                    <span className='d-flex align-items-center'><span className='desc'>My Cookie:</span><span className='text-decoration-underline ml-2'>cookie.link/{user.username}</span></span>
+                    <span className='d-flex align-items-center'><span className='desc'>My Cookie:</span><span className='text-decoration-underline ml-2'>bookings247.co/{user.username}</span></span>
                     <a className='text-decoration-none' onClick={copyLink}>copy link</a>
                 </div>
             </div>

@@ -16,13 +16,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var Modal = function Modal(props) {
   var hide = function hide(event) {
     event.stopPropagation();
     props.hideModal();
   };
-
   return props.visible ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "modal",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -45,7 +43,6 @@ var Modal = function Modal(props) {
     }) : '', props.children]
   }) : '';
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
 
 /***/ })

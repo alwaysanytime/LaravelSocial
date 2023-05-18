@@ -34,6 +34,6 @@ class SuggestMail extends Mailable
      */
     public function build()
     {
-        return $this->from($address = 'noreply@cookie.link', $name = "Cookie.link")->subject($this->mailsubject)->view('mail.suggestemail');
+        return $this->from($address = 'noreply@bookings247.co', $name = "bookings247.co")->subject($this->mailsubject)->view('mail.suggestemail');
     }
 }

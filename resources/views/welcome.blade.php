@@ -18,14 +18,14 @@
     <meta name="description" content="{{$user ? $user->bio : ''}}">
     <meta name="keywords" content="{{$user ? $user->username : ''}} Instagram, {{$user ? $user->username : ''}} twitter, {{$user ? $user->username : ''}} tiktok, {{$user ? $user->username : ''}} website">
     <meta name="robots" content="index" />
-    <meta name="og:title" content="{{$user ? $user->username. ' | ' : ''}} Cookie.link">
+    <meta name="og:title" content="{{$user ? $user->username. ' | ' : ''}} bookings247.co">
     <meta name="og:description" content="Make the most of your social traffic">
     <meta property="og:image:alt" content="{{$user ? $user->username : 'none'}}"/>
-    <meta property="og:image" content="https://cookie.link/{{$user ? $user->avatar : 'none'}}"/>
+    <meta property="og:image" content="https://bookings247.co/{{$user ? $user->avatar : 'none'}}"/>
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{$user ? $user->username : ''}} | Cookie.link">
-    <meta name="twitter:image" content="https://cookie.link/{{$user ? $user->avatar : 'none'}}">
+    <meta name="twitter:title" content="{{$user ? $user->username : ''}} | bookings247.co">
+    <meta name="twitter:image" content="https://bookings247.co/{{$user ? $user->avatar : 'none'}}">
 </head>
 <body style="height: 100% !important;">
     <div id="root"></div>

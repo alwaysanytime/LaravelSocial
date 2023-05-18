@@ -28,7 +28,7 @@ const EditUser = () => {
 
     const copyLink = () => {
         let textArea = document.createElement("textarea");
-        textArea.value = "cookie.link/" + user.username;
+        textArea.value = "bookings247.co/" + user.username;
         // make the textarea out of viewport
         textArea.style.position = "fixed";
         textArea.style.left = "-999999px";
@@ -115,7 +115,7 @@ const EditUser = () => {
             <div className="header">
                 <div className="d-none d-xl-block col-xl-7 title">Edit User Profile</div>
                 <div className="col-12 col-xl-5 d-flex justify-content-between">
-                    <span className='d-flex align-items-center'><span className='desc'>User Cookie:</span><span className='text-decoration-underline ml-2'>cookie.link/{user.username}</span></span>
+                    <span className='d-flex align-items-center'><span className='desc'>User Cookie:</span><span className='text-decoration-underline ml-2'>bookings247.co/{user.username}</span></span>
                     <a className='text-decoration-none' onClick={copyLink}>copy link</a>
                 </div>
             </div>
@@ -127,10 +127,10 @@ const EditUser = () => {
                             <button className='btn btn-primary' onClick={addNewLink}>Add New Link</button>
                         </div>
                         <DragDropContext onDragEnd={handleOnDragEnd}>
-                            <Droppable droppableId="links-body"> 
+                            <Droppable droppableId="links-body">
                                 {(provided) => (
                                     <div className="links-body" {...provided.droppableProps} ref={provided.innerRef}>
-                                        {links.map((link, index) => 
+                                        {links.map((link, index) =>
                                             <Draggable key={"link" + link.id} draggableId={"link" + link.id} index={index}>
                                                 {(provided) => (
                                                 <div className="link" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>

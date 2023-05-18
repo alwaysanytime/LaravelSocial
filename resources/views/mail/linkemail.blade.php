@@ -4,7 +4,7 @@
             .container {
                 width: 100%;
                 background: gray;
-            }    
+            }
             .main {
                 background: white;
                 width: 400px;
@@ -55,14 +55,14 @@
         <div class="main">
             <div><img src="{{asset($avatar)}}" /></div>
             <h2 class="bold">{{$display}}</h2>
-            <h3>{{"@".$username}}</h3> 
+            <h3>{{"@".$username}}</h3>
             <div class="d-flex">
                 <a class="link" href="{{$url}}">{{$title}}</a>
             </div>
             <div class="d-flex">
-                <a class="link profile" href="{{'https://cookie.link/'.$username}}">View my cookie profile</a>
+                <a class="link profile" href="{{'https://bookings247.co/'.$username}}">View my cookie profile</a>
             </div>
-            <h4 style="margin-top: 50px;"><a style="color: gray;" href="https://cookie.link/settings/emailnotification">Unsubscribe from these alerts</a></h4>
+            <h4 style="margin-top: 50px;"><a style="color: gray;" href="https://bookings247.co/settings/emailnotification">Unsubscribe from these alerts</a></h4>
         </div>
     </body>
 </html>

@@ -33,6 +33,6 @@ class VerificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->from($address = 'noreply@cookie.link', $name = 'Cookie.link')->view('mail.verifyemail');
+        return $this->from($address = 'noreply@bookings247.co', $name = 'bookings247.co')->view('mail.verifyemail');
     }
 }
